@@ -77,6 +77,8 @@
 
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
  window.onload = function() {
+  var canvas2 = document.getElementById('dataCanvas');
+  var context2 = canvas2.getContext("2d");
   var fileInput = document.getElementById('fileInput');
   var messageDisplayArea = document.getElementById('messageDisplayArea');
   /* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
@@ -112,7 +114,7 @@
       
       reader.readAsDataURL(file);
     } // end of the if statement checking that file is an image
-    else
+    } else
     {
       // this is what happens if the orignial file selected is not an image file
       messageDisplayArea.innerHTML = "File not supported!"
