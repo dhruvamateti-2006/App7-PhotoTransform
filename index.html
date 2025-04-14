@@ -107,11 +107,12 @@
          for (var i = 0; i < data.length; i+=4) {
           data[i]=0;
           data[i + 1] = 0;
+          context2.putImageData(imageData, 0, 0);
           } // end of img.onload
         
-        img.src = reader.result;
+        
       } //  end of reader.onload
-      
+      img.src = reader.result;
       reader.readAsDataURL(file);
     } // end of the if statement checking that file is an image
     } else
@@ -147,7 +148,7 @@
      
      <canvas id="dataCanvas" width=600 height=500 style="border:1px solid #00f;"></canvas>
      <script>
-      var canvas2 = document.getElementById('blueCanvas');
+      var canvas2 = document.getElementById('dataCanvas');
       var context2 = canvas2.getContext("2d");
       context2.font = '20pt Calibri';
       context2.fillStyle = "blue";
