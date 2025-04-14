@@ -142,6 +142,15 @@
         context.fillStyle = "black";
         context.fillText("Original image will go here", 10, 20);
       </script>
+     
+     <canvas id="dataCanvas" width=600 height=500 style="border:1px solid #00f;"></canvas>
+     <script>
+      var canvas2 = document.getElementById('blueCanvas');
+      var context2 = canvas2.getContext("2d");
+      context2.font = '20pt Calibri';
+      context2.fillStyle = "blue";
+      context2.fillText("New image will go here", 10, 20);
+    </script>
 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
