@@ -77,6 +77,8 @@
 
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
  window.onload = function() {
+  var canvas1 = document.getElementById('myCanvas');
+  var context1 = canvas1.getContext("2d);
   var canvas2 = document.getElementById('dataCanvas');
   var context2 = canvas2.getContext("2d");
   var fileInput = document.getElementById('fileInput');
@@ -99,8 +101,19 @@
         
           drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
 
-          /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
-          /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+         var imageData = context1.getImageData(0, 0, canvas1.width, canvas1.height);
+            var data = imageData.data;
+
+            // Loop through each pixel
+            for (var i = 0; i < data.length; i += 4) {
+              data[i] = 0; // Set red channel to 0
+              data[i + 1] = 0; // Set green channel to 0
+              // Keep blue the same (data[i + 2])
+            }
+
+            // Put blue image on second canvas
+            context2.putImageData(imageData, 0, 0);
+          };
 
           var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
           var data = imageData.data;
