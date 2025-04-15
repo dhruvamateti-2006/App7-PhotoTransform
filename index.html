@@ -14,7 +14,7 @@
  
   Authors in chronological order of contribution:
   Author 1: Timothy E. Riedel
-  Author 2: ?????????
+  Author 2: Dhruva Mateti
   
   References:
   http://docs.webplatform.org/wiki/concepts/programming/drawing_images_onto_canvas#Loading_the_image_programmatically
@@ -104,7 +104,7 @@
          var imageData = context1.getImageData(0, 0, canvas1.width, canvas1.height);
             var data = imageData.data;
 
-            // Loop through each pixel
+            // Loop through each pixel, and put each one through a blue filter
             for (var i = 0; i < data.length; i += 4) {
               data[i] = 0; // Set red channel to 0
               data[i + 1] = 0; // Set green channel to 0
@@ -119,6 +119,7 @@
       reader.readAsDataURL(file);
     } else {
       messageDisplayArea.innerHTML = "File not supported!";
+     // Notify user if inputted file is not a jpg
     }
   });
  };
@@ -137,9 +138,9 @@
         <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
       </div>
       <div id="messageDisplayArea"></div>
-      
+<!--Creates button that either allows for taking picture or uploading file-->
       <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
-      <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
+      <script> /* This script initiates the initial canvas and puts the text on the canvas "myCanvas" */
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext("2d");
         context.font = '20pt Calibri';
@@ -148,7 +149,7 @@
       </script>
      
      <canvas id="dataCanvas" width=600 height=500 style="border:1px solid #00f;"></canvas>
-     <script>
+     <script> /* This script initiates the second modified canvas and puts the text on the canvas "dataCanvas" */
       var canvas2 = document.getElementById('dataCanvas');
       var context2 = canvas2.getContext("2d");
       context2.font = '20pt Calibri';
